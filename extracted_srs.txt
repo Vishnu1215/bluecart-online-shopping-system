@@ -1,0 +1,696 @@
+=== PAGE 1 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+ 
+SOFTWARE REQUIREMENTS SPECIFICATION 
+for 
+ONLINE SHOPPING SYSTEM (OSS) 
+Version 1.0 Approved 
+Author: 
+Vishnu Teja Karampuri 
+Department of Information Technology 
+Chaitanya Bharathi Institute of Technology 
+Hyderabad, Telangana 
+vishnuteja.karampuri15@gmail.com 
+July 2026 
+  
+
+=== PAGE 2 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+Table of Contents 
+1. Introduction 
+(a) Purpose 
+(b) Document Conventions 
+(c) Intended Audience and Reading Suggestions 
+(d) Product Scope 
+(e) References 
+2. Overall Description 
+(a) Product Perspective 
+(b) Product Functions 
+(c) User Classes and Characteristics 
+(d) Operating Environment 
+(e) Design and Implementation Constraints 
+(f) User Documentation 
+(g) Assumptions and Dependencies 
+3. External Interface Requirements 
+(a) User Interfaces 
+(b) Hardware Interfaces 
+(c) Software Interfaces 
+(d) Communications Interfaces 
+4. System Features 
+(a) User Authentication and Access Control 
+(b) Product Catalog and Inventory Management 
+(c) Shopping Cart and Checkout 
+(d) Order Management and Fulfillment 
+(e) Reviews and Ratings 
+(f) Discounts, Coupons, and Promotions 
+(g) Notifications 
+(h) Reporting and Analytics 
+5. Other Nonfunctional Requirements 
+(a) Performance Requirements 
+(b) Safety Requirements 
+(c) Security Requirements 
+(d) Software Quality Attributes 
+(e) Business Rules 
+6. Other Requirements 
+(a) Data Retention 
+(b) Legal and Compliance 
+
+=== PAGE 3 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+(c) Internationalization 
+7. Appendix A: Glossary 
+8. Appendix B: Analysis Models 
+9. Appendix C: To Be Determined (TBD) List 
+  
+
+=== PAGE 4 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+Revision History 
+Name Date Reason For Changes Version 
+Vishnu Teja Karampuri 2026-07-27 Initial Baseline Draft 1.0 
+ 
+ 
+Document Index 
+Key Module / Section Document Reference 
+User Authentication & Access Control Section 4.1 
+Product Catalog & Inventory Section 4.2 
+Shopping Cart & Checkout Section 4.3 
+Order Management & Fulfillment Section 4.4 
+Reviews and Ratings Section 4.5 
+Discounts, Coupons, and Promotions Section 4.6 
+Notifications Section 4.7 
+Reporting and Analytics Section 4.8 
+Performance Requirements Section 5.1 
+Security Requirements Section 5.3 
+ 
+  
+
+=== PAGE 5 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+1 Introduction 
+1.1 Purpose 
+This document specifies the software requirements for the development of an Online Shopping 
+System (OSS), a web-based e-commerce platform intended to enable customers to browse products, 
+place orders, and make payments online, while allowing administrators and vendors to manage 
+inventory, orders, and sales operations. This Software Requirements Specification (SRS) describes the 
+functional and non-functional requirements for Version 1.0 of the system and is intended to serve as 
+the primary reference for the design, development, testing, and acceptance of the product. 
+This document follows the structure recommended by IEEE Std 830-1998, “IEEE Recommended 
+Practice for Software Requirements Specifications.” It is written for use by the development team, 
+project stakeholders, quality assurance personnel, and academic evaluators reviewing the project. 
+1.2 Document Conventions 
+• Requirement identifiers follow the pattern FR-XX for functional requirements and NFR-XX 
+for non-functional requirements. 
+• Priority levels are classified as High, Medium, or Low, indicating the criticality of the 
+requirement to the Minimum Viable Product (MVP). 
+• The keywords shall, should, and may are used per IEEE convention: shall denotes a 
+mandatory requirement, should denotes a recommended requirement, and may denotes an 
+optional requirement. 
+• Terms defined in the Glossary (Appendix A) are italicized on first use within a section. 
+1.3 Intended Audience and Reading Suggestions 
+• Developers — should read Chapters 3, 4, and 5 in detail for implementation guidance. 
+• Project Evaluators / Reviewers — should read Chapters 1, 2, and 4 to assess scope and 
+functional coverage. 
+• Testers / QA — should focus on Chapter 4 (System Features) and Chapter 5 (Non-Functional 
+Requirements) to derive test cases. 
+• Project Managers — should read Chapter 2 for scope and Chapter 6 for outstanding items. 
+Readers unfamiliar with domain-specific terminology should first consult the Glossary in Appendix 
+A. 
+1.4 Product Scope 
+The Online Shopping System (OSS) is a centralized, role-based web application designed to manage 
+the complete lifecycle of an online retail operation. The system shall support three primary user roles: 
+Administrator, Vendor/Seller, and Customer, each with a distinct set of permissions and dashboards. 
+The core objectives of the OSS are to: 
+• Eliminate manual, in-person or phone-based ordering processes for retail purchases. 
+• Provide customers with a self-service platform to browse products, manage a shopping cart, 
+and complete purchases securely. 
+• Provide vendors with tools to list products, manage inventory, and fulfill orders efficiently. 
+• Provide administrators with a consolidated view of sales, inventory, and customer data for 
+reporting and decision-making. 
+
+=== PAGE 6 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+• Ensure data integrity, transactional consistency, and role-based access control across all 
+modules. 
+The system does not include point-of-sale (POS) integration for physical retail stores, third-party 
+marketplace syndication, or logistics/fleet management for delivery; these are explicitly out of scope 
+for Version 1.0 and are noted as candidates for future releases. 
+1.5 References 
+• IEEE Std 830-1998, IEEE Recommended Practice for Software Requirements Specifications, 
+Institute of Electrical and Electronics Engineers, 1998. 
+• IEEE Std 1016-2009, IEEE Recommended Practice for Software Design Descriptions. 
+• Node.js Foundation, Node.js Documentation, https://nodejs.org/en/docs. 
+• MongoDB Inc., MongoDB Manual, https://www.mongodb.com/docs/manual/. 
+• RFC 7519, JSON Web Token (JWT), Internet Engineering Task Force. 
+• OWASP Foundation, OWASP Top Ten Web Application Security Risks, 
+https://owasp.org/www-project-top-ten/. 
+• PCI Security Standards Council, PCI DSS Quick Reference Guide, 
+https://www.pcisecuritystandards.org/. 
+ 
+2 Overall Description 
+2.1 Product Perspective 
+The OSS is a new, self-contained software product. It is not a modification of an existing system, 
+although it may later be integrated with third-party services such as payment gateways, 
+shipping/courier APIs, or SMS/email gateways for order notifications. 
+The system follows a three-tier architecture: 
+• Presentation Tier: A responsive single-page web application (SPA) providing role-specific 
+dashboards (Customer storefront, Vendor console, Admin panel). 
+• Application/Logic Tier: A RESTful API server responsible for business logic, 
+authentication, authorization, cart/order processing, and payment orchestration. 
+• Data Tier: A NoSQL document database responsible for persistent storage of all catalog, 
+order, and account data. 
+2.2 Product Functions 
+• User authentication and role-based access control. 
+• Product catalog and inventory management. 
+• Shopping cart and wishlist management. 
+• Order placement, checkout, and payment processing. 
+• Order tracking and fulfillment management. 
+• Product reviews and ratings. 
+• Discount, coupon, and promotion management. 
+• Notifications (order confirmation, shipping updates). 
+• Reporting and analytics (sales, inventory, customer behavior). 
+
+=== PAGE 7 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+2.3 User Classes and Characteristics 
+User Class Description Characteristics 
+Administrator 
+Manages platform-wide catalog master 
+data, users, vendors, and system 
+configuration. 
+Technically proficient; requires full 
+access to all modules and reporting tools. 
+Vendor/Seller Manages products, stock levels, and fulfills orders for items they list. Moderate technical proficiency; primarily uses catalog and order-fulfillment modules. 
+Customer End consumer purchasing products through the platform. Varying technical proficiency; requires a simple, intuitive, mobile-friendly interface. 
+ 
+2.4 Operating Environment 
+• Client side: Modern web browsers (Chrome, Firefox, Edge, Safari — latest two major 
+versions), supporting both desktop and mobile viewports. 
+• Server side: Node.js runtime (LTS version) running an Express.js application server, 
+deployable on Linux-based cloud infrastructure. 
+• Database: MongoDB (self-hosted or Atlas-hosted cluster). 
+• Network: HTTPS over the public internet. 
+2.5 Design and Implementation Constraints 
+• The system shall be implemented using JavaScript/TypeScript across both frontend and 
+backend to maintain a unified codebase and skill set. 
+• Authentication shall be implemented using stateless JSON Web Tokens (JWT) rather than 
+server-side sessions, to support horizontal scalability. 
+• The database schema shall be document-oriented (MongoDB), which constrains the system to 
+eventual-consistency patterns for certain cross-collection aggregate operations (e.g., platform-
+wide sales reports). 
+• The system must be deployable on infrastructure with modest resources (minimum 2 vCPU / 
+4GB RAM) to remain viable for small-to-medium retailers. 
+• All passwords must be stored using a salted one-way hashing algorithm (bcrypt or 
+equivalent); plaintext password storage is strictly prohibited. 
+• Payment card data shall never be stored directly by the system; all card transactions shall be 
+delegated to a PCI-DSS compliant third-party payment gateway. 
+2.6 User Documentation 
+• A User Manual covering role-specific workflows for Administrators, Vendors, and 
+Customers. 
+• An API reference document (auto-generated where feasible) for developers integrating with 
+the system. 
+• An in-application onboarding/help tooltip system for first-time users. 
+2.7 Assumptions and Dependencies 
+• It is assumed that end users have access to a stable internet connection and a modern web 
+browser. 
+
+=== PAGE 8 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+• It is assumed that vendors have digitized product catalogs to a degree that permits bulk data 
+import, or accept manual re-entry during onboarding. 
+• The system depends on a third-party payment gateway for transaction processing; 
+unavailability of this gateway will block checkout but not browsing functionality. 
+• The system depends on a third-party email/SMS gateway for notification delivery; 
+unavailability of this gateway will degrade, but not block, core functionality. 
+• It is assumed that a single currency (e.g., INR or USD) is used per deployment instance, 
+simplifying pricing and tax logic. 
+ 
+3 External Interface Requirements 
+3.1 User Interfaces 
+• The system shall provide three distinct dashboard layouts corresponding to the Administrator, 
+Vendor, and Customer roles. 
+• All interfaces shall be responsive and usable on screen widths from 360px (mobile) to 1920px 
+(desktop). 
+• Form validation errors shall be displayed inline, adjacent to the relevant field, within 200ms 
+of user input where client-side validation applies. 
+• The system shall provide breadcrumb navigation for any workflow nested more than two 
+levels deep. 
+• The system shall provide a persistent shopping cart indicator visible from any page in the 
+customer storefront. 
+3.2 Hardware Interfaces 
+The system does not directly interface with specialized hardware. Standard peripherals (keyboard, 
+mouse, touchscreen) are assumed for client interaction. No barcode scanners or POS terminals are 
+required for Version 1.0, though such integrations are identified as future enhancements (see 
+Appendix C). 
+3.3 Software Interfaces 
+Interface Purpose Data Exchanged 
+MongoDB Persistent data storage 
+Product, order, customer, vendor, and 
+payment records (BSON/JSON 
+documents) 
+Payment Gateway (e.g., 
+Razorpay/Stripe) Online payment processing Transaction amount, status, reference ID 
+Email/SMS Gateway (e.g., 
+SendGrid/Twilio) Notification delivery Order/notice text, recipient contact info, delivery status 
+JWT Library (jsonwebtoken) Token generation and verification Signed authentication tokens 
+Shipping/Courier API (future) Delivery tracking Shipment status, tracking ID, estimated delivery date 
+ 
+3.4 Communications Interfaces 
+• All client-server communication shall occur over HTTPS (TLS 1.2 or higher). 
+
+=== PAGE 9 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+• The API shall expose RESTful endpoints returning JSON-formatted responses with standard 
+HTTP status codes. 
+• WebSocket or polling-based mechanisms may be used for near-real-time order status 
+notification in future versions. 
+ 
+4 System Features 
+This chapter enumerates the functional requirements of the OSS, organized by feature area. Each 
+feature includes a description, priority, and a table of associated functional requirements. 
+4.1 User Authentication and Access Control 
+4.1.1 Description and Priority 
+High Priority. Provides secure registration, login, logout, and session management for all user roles, 
+along with role-based authorization for all protected resources. 
+4.1.2 Stimulus/Response Sequences 
+• User submits registration or login credentials (email/username and password). 
+• System verifies credentials, issues a signed JWT, and enforces role-based access on 
+subsequent requests. 
+4.1.3 Functional Requirements 
+ID Requirement Priority 
+FR-01 The system shall allow a Customer to register using an email address and password. High 
+FR-02 The system shall allow users to log in using a registered email/username and password. High 
+FR-03 The system shall issue a signed JWT access token upon successful authentication, valid for a configurable expiry period. High 
+FR-04 The system shall reject access to any protected API endpoint when a valid JWT is not supplied in the request header. High 
+FR-05 
+The system shall enforce role-based access control (RBAC), restricting 
+endpoint access according to the user’s assigned role (Admin, Vendor, 
+Customer). 
+High 
+FR-06 The system shall allow users to reset a forgotten password via a time-limited email verification link. Medium 
+FR-07 The system shall lock a user account for 15 minutes after 5 consecutive failed login attempts. Medium 
+ 
+4.2 Product Catalog and Inventory Management 
+4.2.1 Description and Priority 
+High Priority. Enables vendors and administrators to manage product listings, categories, and stock 
+levels; enables customers to browse and search the catalog. 
+4.2.2 Stimulus/Response Sequences 
+• Vendor creates or updates a product listing with catalog details and stock quantity. 
+• System validates the listing, assigns a SKU, and makes it available for customer search and 
+purchase. 
+
+=== PAGE 10 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+4.2.3 Functional Requirements 
+ID Requirement Priority 
+FR-08 
+The system shall allow a Vendor to create a new product listing with 
+mandatory fields (name, description, category, price, stock quantity, 
+images). 
+High 
+FR-09 The system shall automatically generate a unique SKU (Stock Keeping Unit) upon product creation, following a configurable format. High 
+FR-10 The system shall allow a Customer to search and filter products by category, price range, and rating. High 
+FR-11 The system shall automatically decrement available stock upon successful order placement and prevent orders exceeding available stock. High 
+FR-12 The system shall allow a Vendor to update product price, description, and stock levels. Medium 
+FR-13 The system shall allow an Administrator to deactivate (soft-delete) a product listing, retaining historical order data. Medium 
+ 
+4.3 Shopping Cart and Checkout 
+4.3.1 Description and Priority 
+High Priority. Allows customers to add products to a cart, apply discounts, and complete a checkout 
+with shipping and payment details. 
+4.3.2 Stimulus/Response Sequences 
+• Customer adds, modifies, or removes items in the shopping cart and applies a coupon code. 
+• System validates stock and coupon eligibility, then processes shipping selection and payment 
+through the gateway. 
+4.3.3 Functional Requirements 
+ID Requirement Priority 
+FR-14 The system shall allow a Customer to add one or more products, with a selected quantity, to a persistent shopping cart. High 
+FR-15 The system shall allow a Customer to modify item quantities or remove items from the cart prior to checkout. High 
+FR-16 The system shall allow a Customer to apply a valid coupon code to the cart, recalculating the order total. Medium 
+FR-17 The system shall prevent checkout completion if any cart item’s requested quantity exceeds available stock at the time of checkout. High 
+FR-18 The system shall allow a Customer to select a shipping address and shipping method during checkout. High 
+FR-19 The system shall allow a Customer to complete payment via an integrated payment gateway prior to order confirmation. High 
+ 
+4.4 Order Management and Fulfillment 
+4.4.1 Description and Priority 
+High Priority. Supports order confirmation, tracking, and fulfillment workflows for vendors, 
+customers, and administrators. 
+4.4.2 Stimulus/Response Sequences 
+• Customer completes payment and the system generates an order record. 
+
+=== PAGE 11 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+• Vendor updates the fulfillment status as the order progresses through processing, shipping, 
+and delivery. 
+4.4.3 Functional Requirements 
+ID Requirement Priority 
+FR-20 The system shall generate a unique order ID and order confirmation upon successful payment. High 
+FR-21 The system shall allow a Vendor to update the fulfillment status of an order (e.g., Processing, Shipped, Delivered) for products they supply. High 
+FR-22 The system shall allow a Customer to view real-time order status and order history. High 
+FR-23 The system shall allow a Customer to request cancellation of an order prior to it being marked as Shipped. Medium 
+FR-24 The system shall allow a Customer to initiate a return request within a configurable return window after delivery. Medium 
+ 
+4.5 Reviews and Ratings 
+4.5.1 Description and Priority 
+Medium Priority. Allows customers to submit product reviews and star ratings following a completed 
+purchase. 
+4.5.2 Stimulus/Response Sequences 
+• Customer who has purchased a product submits a star rating and written review. 
+• System recalculates the product’s average rating and displays it on the catalog listing. 
+4.5.3 Functional Requirements 
+ID Requirement Priority 
+FR-25 The system shall allow a Customer to submit a star rating (1–5) and written review for a product they have purchased. Medium 
+FR-26 The system shall calculate and display an average rating for each product based on all submitted reviews. Medium 
+FR-27 The system shall allow an Administrator to remove a review that violates content guidelines. Low 
+ 
+4.6 Discounts, Coupons, and Promotions 
+4.6.1 Description and Priority 
+Medium Priority. Allows administrators and vendors to define promotional discounts and coupon 
+codes. 
+4.6.2 Stimulus/Response Sequences 
+• Administrator or Vendor defines a coupon code or time-bound discount with validity rules. 
+• System applies or rejects the coupon/discount automatically at checkout based on those rules. 
+4.6.3 Functional Requirements 
+ID Requirement Priority 
+FR-28 The system shall allow an Administrator to define a coupon code with a discount type (percentage or flat amount), validity period, and usage limit. Medium 
+
+=== PAGE 12 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+FR-29 The system shall prevent the use of an expired or usage-exhausted coupon code at checkout. Medium 
+FR-30 The system shall allow a Vendor to configure a time-bound discount on their own product listings. Low 
+ 
+4.7 Notifications 
+4.7.1 Description and Priority 
+Medium Priority. Allows the system to notify customers of order-related events via email/SMS. 
+4.7.2 Stimulus/Response Sequences 
+• An order-related event occurs (order confirmation, fulfillment status change). 
+• System dispatches an email or SMS notification to the Customer, where notifications are 
+enabled. 
+4.7.3 Functional Requirements 
+ID Requirement Priority 
+FR-31 The system shall dispatch an email notification to the Customer upon order confirmation. Medium 
+FR-32 The system should dispatch a notification when an order’s fulfillment status changes (e.g., Shipped, Delivered), if notifications are enabled. Low 
+ 
+4.8 Reporting and Analytics 
+4.8.1 Description and Priority 
+Medium Priority. Provides administrators and vendors with aggregate views and exportable reports 
+across sales and inventory data. 
+4.8.2 Stimulus/Response Sequences 
+• Administrator or Vendor requests a sales summary or low-stock inventory report for a 
+specified date range. 
+• System aggregates the underlying order and inventory data and renders or exports the report. 
+4.8.3 Functional Requirements 
+ID Requirement Priority 
+FR-33 The system shall generate a sales summary report for a specified date range, filterable by vendor or category. Medium 
+FR-34 The system shall generate a low-stock inventory report highlighting products below a configurable stock threshold. Medium 
+FR-35 The system shall allow export of generated reports in CSV format. Low 
+ 
+5 Other Nonfunctional Requirements 
+5.1 Performance Requirements 
+ID Requirement 
+NFR-01 The system shall respond to 95% of API requests within 500ms under a load of up to 500 concurrent users. 
+
+=== PAGE 13 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+NFR-02 The system shall support a catalog of at least 50,000 products without measurable degradation in query response time. 
+NFR-03 Checkout completion (cart validation through payment confirmation) shall complete within 5 seconds under normal load. 
+ 
+5.2 Safety Requirements 
+The system does not control physical machinery or safety-critical infrastructure. However, it shall 
+implement safeguards against accidental irreversible data loss: all deletions of catalog and order 
+records (products, orders, customer accounts) shall be implemented as soft deletes, with a recovery 
+window of 30 days before permanent purging. 
+5.3 Security Requirements 
+ID Requirement 
+NFR-04 All user passwords shall be hashed using bcrypt (or equivalent) with a minimum cost factor of 10 before storage. 
+NFR-05 All communication between client and server shall be encrypted using TLS 1.2 or higher.  
+NFR-06 JWT access tokens shall expire within 24 hours; refresh tokens, where implemented, shall be revocable server-side. 
+NFR-07 The system shall sanitize all user inputs to prevent injection attacks (NoSQL injection, XSS), consistent with OWASP Top Ten guidance. 
+NFR-08 The system shall never store raw payment card data; all payment processing shall be delegated to a PCI-DSS compliant gateway. 
+NFR-09 The system shall log all administrative and vendor actions (product deletion, order status override, refund issuance) to an immutable audit trail. 
+ 
+5.4 Software Quality Attributes 
+• Availability: The system shall target 99.5% uptime, excluding scheduled maintenance 
+windows. 
+• Maintainability: The codebase shall follow a modular structure (separated routes, 
+controllers, models) to facilitate independent module updates. 
+• Usability: A first-time user shall be able to complete a core task (e.g., adding a product to the 
+cart) without external instruction, within 3 interactions. 
+• Portability: The backend shall be containerizable (Docker) to support deployment across 
+differing hosting environments. 
+• Scalability: The stateless authentication design shall permit horizontal scaling of the 
+application server tier behind a load balancer, especially during high-traffic sales events. 
+5.5 Business Rules 
+• Only an Administrator may create or deactivate vendor accounts. 
+• A Vendor may only manage products and orders associated with their own catalog. 
+• A Customer may only view (not modify) order status once an order has been confirmed, 
+except to request cancellation or return. 
+• Confirmed orders are immutable except via an explicit, logged Administrator or Vendor 
+override (e.g., cancellation, refund). 
+ 
+
+=== PAGE 14 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+6 Other Requirements 
+6.1 Data Retention 
+Transactional records (orders, payments, invoices) shall be retained for a minimum of 7 years 
+following order completion, in accordance with typical financial record-keeping and tax regulations. 
+6.2 Legal and Compliance 
+The system shall be designed to accommodate applicable data protection principles (e.g., limiting 
+collection of personally identifiable information to what is operationally necessary, providing 
+mechanisms for data correction upon request) and shall support PCI-DSS compliant payment 
+handling practices. 
+6.3 Internationalization 
+Version 1.0 shall support the English language and a single currency only. The architecture should not 
+preclude the addition of multi-language and multi-currency support in future versions. 
+ 
+7 Appendix A: Glossary 
+Term Definition 
+OSS Online Shopping System — the software product specified in this document. 
+JWT JSON Web Token; a compact, URL-safe means of representing claims for authentication. 
+RBAC Role-Based Access Control; an authorization model restricting system access based on user roles. 
+SKU Stock Keeping Unit; a unique identifier assigned to a distinct product/variant. 
+Soft Delete A deletion strategy in which records are flagged as inactive rather than physically removed from the database. 
+Cart A temporary collection of products selected by a customer prior to checkout. 
+Coupon A code entitling the bearer to a discount on an order, subject to defined validity rules. 
+ 
+ 
+8 Appendix B: Analysis Models 
+B.1 Use Case Diagram 
+The primary use cases available to each user role are as follows: 
+• Administrator: Manage Users, Manage Products, Generate Reports. 
+• Vendor: Manage Products, Fulfill Orders. 
+• Customer: Browse Products, Manage Cart, Checkout / Pay, Track Order. 
+B.2 Data Model Overview 
+A simplified entity-relationship overview of the core collections in the system: Customer, Product, 
+Vendor, Cart, Order, and Review — where a Customer owns a Cart and places Orders, a Vendor lists 
+
+=== PAGE 15 ===
+Laboratory Record 
+of Software Engineering Lab 
+      Roll No.: _______________ 
+Exp No.: _______________   
+Sheet No.: _______________ 
+Date: _______________                                                                        
+ 
+ 
+ 
+160124737112 
+ 
+01 
+ 
+Products, a Cart contains Products, an Order includes Products, and Customers write Reviews about 
+Products. 
+B.3 Use Case Specification: Checkout and Payment 
+Field Description 
+Use Case ID UC-04 
+Name Checkout and Payment 
+Actor Customer 
+Precondition Customer is logged in and has at least one item in their cart. 
+Main Flow 
+1. Customer reviews cart contents and proceeds to checkout. 2. System displays 
+shipping address and shipping method options. 3. Customer selects/enters 
+shipping details. 4. Customer proceeds to payment and selects a payment method. 
+5. System validates stock availability for all cart items, then redirects to the 
+payment gateway. 6. Upon successful payment confirmation, the system creates 
+the order record and clears the cart. 
+Alternate Flow If any cart item is out of stock at validation time, the system displays an error and prompts the Customer to adjust the cart before proceeding. 
+Postcondition Order record is persisted with status “Confirmed”; stock levels are decremented; order confirmation notification is dispatched. 
+ 
+9 Appendix C: To Be Determined (TBD) List 
+TBD ID Description Status 
+TBD-01 Final decision on third-party payment gateway provider(s) to be integrated. Pending Evaluation 
+TBD-02 Whether multi-vendor marketplace commission/settlement logic will be included in Version 1.0 or deferred. Under Review 
+TBD-03 Exact data retention and deletion policy pending institutional/legal review. Under Review 
+TBD-04 Whether multi-currency and multi-language support will be prioritized for Version 2.0. Pending Evaluation 
+TBD-05 Whether real-time shipment tracking via courier API integration will be included in a future release. Under Review 
+ 
+
