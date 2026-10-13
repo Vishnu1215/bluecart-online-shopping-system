@@ -99,9 +99,36 @@ export const initialUsers: User[] = [
     "avatar": "VM"
   },
   {
+    "id": "usr_vendor_apex_alias",
+    "name": "Vikram Mehta (Apex/TechWest)",
+    "email": "vikram@apextech.in",
+    "mobile": "+91 99880 33445",
+    "passwordHash": "$2a$10$BgJKOKs/QQDI5W2CO4OSdevY5m4c4Xfvv2CiOXW/rDXCSq5T4CjMq",
+    "role": "vendor",
+    "status": "Active",
+    "failedAttempts": 0,
+    "lockUntil": null,
+    "vendorId": "vnd_techwest",
+    "createdAt": "2025-01-15T08:30:00.000Z",
+    "avatar": "VM"
+  },
+  {
     "id": "usr_admin",
     "name": "Rajesh Kumar",
     "email": "admin@shop.example",
+    "mobile": "+91 98111 22334",
+    "passwordHash": "$2a$10$327SAI.vpj9f.tRWevZHzuHJdSCq3/UCteHSDOHGlPsLAbmCedDba",
+    "role": "admin",
+    "status": "Active",
+    "failedAttempts": 0,
+    "lockUntil": null,
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "avatar": "RK"
+  },
+  {
+    "id": "usr_admin_alias",
+    "name": "Rajesh Kumar",
+    "email": "admin@bluecart.in",
     "mobile": "+91 98111 22334",
     "passwordHash": "$2a$10$327SAI.vpj9f.tRWevZHzuHJdSCq3/UCteHSDOHGlPsLAbmCedDba",
     "role": "admin",

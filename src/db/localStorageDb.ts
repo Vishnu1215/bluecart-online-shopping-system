@@ -6,7 +6,7 @@ import {
   initialPayments, initialReviews, initialAuditLogs, initialNotifications, initialContactMessages 
 } from './seedData';
 
-export const DB_STORAGE_KEY = 'bluecart_db_v2';
+export const DB_STORAGE_KEY = 'bluecart_db_v3';
 
 export interface DatabaseSchema {
   version: string;
